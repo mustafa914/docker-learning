@@ -4,7 +4,12 @@ WORKDIR /app
 
 COPY . . 
 
-RUN pip install flask
+RUN apt-get update && apt-get install -y \
+    gcc \
+    libmariadb-dev \
+    pkg-config
+
+RUN pip install flask mysqlclient
 
 EXPOSE 5002
 
